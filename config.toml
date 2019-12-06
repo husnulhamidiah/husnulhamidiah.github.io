@@ -1,0 +1,20 @@
+baseurl = "https://husnulhamidiah.github.io/"
+languageCode = "en-us"
+title = "Honbon"
+theme = "hugo-journal"
+paginate = 10
+
+[author]
+  name = "Husnul Anwari"
+  homepage = "https://github.com/husnulhamidiah"
+
+[params]
+  description = "Husnul Anwari's Blog"
+  githubUsername = "husnulhamidiah"
+  twitterUsername = "husnulanwari"
+  tagline = "I code, drink tea, sometimes coffee too."
+
+[params.work]
+  jobTitle = "Product Engineer"
+  company = "Gojek"
+  companyUrl = "https://www.gojek.io"

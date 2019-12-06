@@ -1,0 +1,8 @@
+[submodule "themes/hugo-journal"]
+	path = themes/hugo-journal
+	url = https://github.com/dashdashzako/hugo-journal.git
+	branch = master
+[submodule "public"]
+	path = public
+	url = git@github.com:husnulhamidiah/husnulhamidiah.github.io.git
+	branch = master
