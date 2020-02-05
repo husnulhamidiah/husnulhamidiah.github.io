@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Honbon</title>
+    <link>https://husnulhamidiah.github.io/post/</link>
+    <description>Recent content in Posts on Honbon</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 06 Dec 2019 14:30:26 +0700</lastBuildDate>
+    
+	<atom:link href="https://husnulhamidiah.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Undoing git action — in case you messed up your commits</title>
+      <link>https://husnulhamidiah.github.io/post/1575959833/</link>
+      <pubDate>Fri, 06 Dec 2019 14:30:26 +0700</pubDate>
+      
+      <guid>https://husnulhamidiah.github.io/post/1575959833/</guid>
+      <description>The magic List all your git history
+git reflog a24c15b (HEAD -&amp;gt; master) HEAD@{0}: cherry-pick: Add rabbitmq connection tests fdd75ca HEAD@{1}: cherry-pick: Update rabbitmq credentials 06091ac HEAD@{2}: commit (cherry-pick): Add scafold for rabbitmq connection 11ef50f HEAD@{3}: reset: moving to HEAD@{3} a3640ed HEAD@{4}: commit (cherry-pick): Update rabbitmq credentials 11ef50f HEAD@{5}: checkout: moving from add-rabbitmq-connection to master Undo your wrong step, pick one of these commands
+git reset --soft HEAD@{3} git reset --hard HEAD@{3} </description>
+    </item>
+    
+    <item>
+      <title>TIL — git merge, rebase and cherry-pick</title>
+      <link>https://husnulhamidiah.github.io/post/1575626014/</link>
+      <pubDate>Wed, 04 Dec 2019 18:30:25 +0700</pubDate>
+      
+      <guid>https://husnulhamidiah.github.io/post/1575626014/</guid>
+      <description>This post will show you some ways you can manage commits from different branch, git provides us with so many options but we will focus only on merge, rebase and cherry-pick. I won&#39;t explain to you what&#39;s behind the wheels about these command because I also not shure how they works.
+All I want to show you is the effect of these command. Each command will be run with following commit history :</description>
+    </item>
+    
+    <item>
+      <title>Auto accept instagram following request</title>
+      <link>https://husnulhamidiah.github.io/post/1564846042/</link>
+      <pubDate>Sat, 03 Aug 2019 22:27:22 +0700</pubDate>
+      
+      <guid>https://husnulhamidiah.github.io/post/1564846042/</guid>
+      <description>I have over 9000 following requests Oh I love being programmer.
+ </description>
+    </item>
+    
+    <item>
+      <title>How to run Mac Software Update via terminal</title>
+      <link>https://husnulhamidiah.github.io/post/1558751030/</link>
+      <pubDate>Sat, 25 May 2019 09:23:50 +0700</pubDate>
+      
+      <guid>https://husnulhamidiah.github.io/post/1558751030/</guid>
+      <description>I just want to update my machine  softwareupdate -l — provide a list of all available updates along with their individual file sizes and a note indicating whether you’ll need to restart your Mac to complete the update process sudo softwareupdate -i name — &amp;lsquo;name&amp;rsquo; is the exact name of one of the available updates revealed by the list command sudo softwareupdate -i -a — install all updates  No more fail update!</description>
+    </item>
+    
+    <item>
+      <title>Stream torrent file with VLC</title>
+      <link>https://husnulhamidiah.github.io/post/1556778978/</link>
+      <pubDate>Thu, 02 May 2019 13:36:18 +0700</pubDate>
+      
+      <guid>https://husnulhamidiah.github.io/post/1556778978/</guid>
+      <description>I didn&#39;t think this is possible This week, I switch from Ubuntu to MacOS and one of the application that I really want to be on my new machince is PopCorn Time. It&#39;s an app for streaming movie based on torrent. Typically with torrent, I have to download the whole file to watch it, but with this app I can stream the movie. Even better, it can play on VLC.</description>
+    </item>
+    
+    <item>
+      <title>‘/tmp/mysql.sock’ (2) Error, Docker For Mac is Unusable</title>
+      <link>https://husnulhamidiah.github.io/post/1556181877/</link>
+      <pubDate>Wed, 24 Apr 2019 22:54:09 +0700</pubDate>
+      
+      <guid>https://husnulhamidiah.github.io/post/1556181877/</guid>
+      <description>1. Can’t connect to local MySQL server through socket ‘/tmp/mysql.sock’ (2) I have a Docker with MySQL image running, but when I try to connect to it using mysql -u root -p, I got this response :
+Can’t connect to local MySQL server through socket ‘/tmp/mysql.sock’ (2) Turn out by default MySQL using socket to establish a connection, while with Docker we need a tcp connection. So, instead of using previous command, I use this and it works flawlessly</description>
+    </item>
+    
+    <item>
+      <title>First try at Capture the Flag (CTF) event</title>
+      <link>https://husnulhamidiah.github.io/post/1556181876/</link>
+      <pubDate>Mon, 18 Feb 2019 14:41:14 +0700</pubDate>
+      
+      <guid>https://husnulhamidiah.github.io/post/1556181876/</guid>
+      <description>Its time to write again after long long hiatus. From now on I will try to write at least one article/story a week. Okay, let&#39;s get started!
+ Last week, I went to Jakarta to attend Hack-a-Fun — my company annual hackaton event. Part of the events was Capture The Flag (CTF). I formed a team consisting of three person including me to join &amp;hellip; and that was a fun and wild experience.</description>
+    </item>
+    
+    <item>
+      <title>... ^*&amp;#)^&amp;!GF&amp;^%YO(&amp;</title>
+      <link>https://husnulhamidiah.github.io/post/1556181739/</link>
+      <pubDate>Sat, 15 Sep 2018 22:17:48 +0700</pubDate>
+      
+      <guid>https://husnulhamidiah.github.io/post/1556181739/</guid>
+      <description>I remember when I start writing this blog, It was when I got my new phone to replace my broken Nexus 5. If you are reading my blog, you probably know what device I&#39;m using, Yup! the Nexus 5 big brother — Nexus 5x.
+When I bought the Nexus 5x, It wasn&#39;t without fear, I know that this device will fall into Bootloop of Death (BLOD) sometime. &amp;hellip; and the day has come, my Nexus 5x is dead and I don&#39;t have any smartphone right now.</description>
+    </item>
+    
+    <item>
+      <title>How to play Yu Gi Oh! Joey The Passion on Ubuntu 16.04</title>
+      <link>https://husnulhamidiah.github.io/post/1556181601/</link>
+      <pubDate>Wed, 12 Sep 2018 12:30:22 +0700</pubDate>
+      
+      <guid>https://husnulhamidiah.github.io/post/1556181601/</guid>
+      <description>For a couple weeks I&#39;ve been working on back and forth between Ubuntu and Windows. I code mostly on Ubuntu but something I can&#39;t live without is in Windows. Guest what? It&#39;s a game, more specific it&#39;s Yu Gi Oh! Joey The Passion. A game that I grew with. It&#39;s a simple game but very exciting because you can arrange your deck in countless possibilities.
+Then, I ask my self (and Google), can I play this game in Ubuntu so I don&#39;t have to switch between Windows or even remove Windows completely.</description>
+    </item>
+    
+    <item>
+      <title>Easy way to pull all Git submodules</title>
+      <link>https://husnulhamidiah.github.io/post/1556181579/</link>
+      <pubDate>Thu, 09 Aug 2018 22:16:21 +0700</pubDate>
+      
+      <guid>https://husnulhamidiah.github.io/post/1556181579/</guid>
+      <description>UPDATE - 04 DEC 2019
+For git 2.23.0 now you can colone, initialize all submodules and also pull the content from remote with single command:
+git clone --recurse-submodules --remote-submodules git@github.com:username/repository.git git submodule foreach --recursive git checkout master No more hasle! The solution below is originally from that link, posted by a user jjmontes.
+For git 1.8.2 or above the option --remote was added to support updating to latest tips of remote branches:</description>
+    </item>
+    
+    <item>
+      <title>How to install Xposed on Nexus 5x (Oreo)</title>
+      <link>https://husnulhamidiah.github.io/post/1556181547/</link>
+      <pubDate>Sat, 12 May 2018 17:20:22 +0700</pubDate>
+      
+      <guid>https://husnulhamidiah.github.io/post/1556181547/</guid>
+      <description>Introduction After installing TWRP and rooted my nexus 5x last week, the first thing that pops into my head is installing Xposed Framework. If you don&#39;t know what is Xposed Framework, here what brief explanation as on its official website.
+ Xposed is a framework for modules that can change the behavior of the system and apps without touching any APKs. Xposed gives developers the ability to modify pretty much whatever they want—mostly aimed at individual applications but even system-wide features can be modified.</description>
+    </item>
+    
+    <item>
+      <title>How to install TWRP and root Nexus 5x</title>
+      <link>https://husnulhamidiah.github.io/post/1556181332/</link>
+      <pubDate>Tue, 08 May 2018 14:20:43 +0700</pubDate>
+      
+      <guid>https://husnulhamidiah.github.io/post/1556181332/</guid>
+      <description>Disclaimer  These have all been tested BUT install TWRP and root at your own risk! I am NOT responsible for anything that may happen to your device. Your device warranty is now void.
+ Introduction This month I got my Frankenstein nexus 5x back (I will tell the story behind all of this later) since my previous phone was lost. Everything works fine with this phone, it already updated to April 2018 security patch.</description>
+    </item>
+    
+    <item>
+      <title>How to create a blog with Hugo and Github</title>
+      <link>https://husnulhamidiah.github.io/post/1556147968/</link>
+      <pubDate>Mon, 09 Apr 2018 08:51:07 +0700</pubDate>
+      
+      <guid>https://husnulhamidiah.github.io/post/1556147968/</guid>
+      <description>Introduction Blogging is a common thing right now, you can start blogging using free services with zero configuration like Blogger or Wordpress. On the other hands, did you know that you can build your own blogging platform too — from the ground at no cost.
+Introducing Hugo - one of the most popular open-source static site generators written in Go a.k.a Golang. It offers simplicity in building a website while maintaining good performance and flexibility.</description>
+    </item>
+    
+  </channel>
+</rss>

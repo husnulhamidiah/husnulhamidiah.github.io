@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Hugo 0.60.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Husnul Anwari">
+  <meta property="og:url" content="https://husnulhamidiah.github.io/post/1556181876/">
+
+  <title>First try at Capture the Flag (CTF) event - Honbon</title>
+  <meta property="og:title" content="First try at Capture the Flag (CTF) event - Honbon">
+  <meta property="og:type" content="article">
+  <meta name="description" content="">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700">
+  <link rel="stylesheet" href="/css/highlight.css">
+  <link rel="stylesheet" href="/css/journal.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="Honbon">
+
+</head>
+
+<body>
+  <div class="container">
+
+    <nav class="site-nav">
+      <a href="https://husnulhamidiah.github.io/">Index</a>
+    </nav>
+
+
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">First try at Capture the Flag (CTF) event</h1>
+      <time class="post-date" datetime="2019-02-18 14:41:14 WIB">18 Feb 2019</time>
+    </header>
+
+    <blockquote>
+<p>Its time to write again after long long hiatus. From now on I will try to write at least one article/story a week. Okay, let's get started!</p>
+</blockquote>
+<p>Last week, I went to Jakarta to attend Hack-a-Fun — my company annual hackaton event. Part of the events was Capture The Flag (CTF). I formed a team consisting of three person including me to join &hellip; and that was a fun and wild experience.</p>
+<p>There are at least 15 challenges divided in 5 section in CTF, but I will just cover a small fraction of it. Without any further introduction, let's get started, shall we?</p>
+<h3 id="web-sections">Web Sections</h3>
+<p>The first section is web, there are a lot of challenges in this section but two of them are the most memorable in my mind.</p>
+<h4 id="1--jiheon-challenge">#1 — Jiheon Challenge</h4>
+<p>This challenge introduce me into SQL injection. Given a login form and we have to crack the credentials.</p>
+<p>The hint given was the source code of that login form written in Go. Here is the snippet of the most important part of the code — where the key to catch the flag persist.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">u</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">UserService</span>) <span style="color:#a6e22e">Login</span>(<span style="color:#a6e22e">username</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">password</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">error</span> {
+  <span style="color:#a6e22e">query</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;SELECT * FROM users WHERE username = &#39;%s&#39; AND password = &#39;%s&#39;&#34;</span>, <span style="color:#a6e22e">username</span>, <span style="color:#a6e22e">password</span>)
+  <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">query</span>)
+
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">users</span> []<span style="color:#a6e22e">entity</span>.<span style="color:#a6e22e">User</span>
+  <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">MySQL</span>.<span style="color:#a6e22e">Select</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">users</span>, <span style="color:#a6e22e">query</span>)
+  <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
+  }
+
+  <span style="color:#75715e">// Harusnya hanya ada 1 username unik, kan?
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">users</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span> {
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">errors</span>.<span style="color:#a6e22e">New</span>(<span style="color:#e6db74">&#34;Terjadi kesalahan&#34;</span>)
+  }
+  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
+}
+</code></pre></div><p>For this challenge, I was very lucky because when I googling for <strong>sql injection username password</strong> the result was on point</p>
+<p>Basically those injections will bring you list of <strong>all</strong> users in database. I try all of them but none works and start asking myself what I'm missing here. After some digging, the key actually lies in this lines:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">  <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">users</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span> {
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">errors</span>.<span style="color:#a6e22e">New</span>(<span style="color:#e6db74">&#34;Terjadi kesalahan&#34;</span>)
+  }
+</code></pre></div><p>If the query result more than one row it will return an error. So, what I need to do is just put a limit, something like <code>1' or 1=1 limit 1 -- -</code> for username and <code>blah</code> or anything for password because it will be commented.</p>
+<p>First flag of the day!</p>
+<h4 id="2--jiwon-challenge">#2 — Jiwon Challenge</h4>
+<p>The next one is quite similar but little bit tricky. Given the same login form but the hint is different.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">u</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">UserService</span>) <span style="color:#a6e22e">Login</span>(<span style="color:#a6e22e">username</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">password</span> <span style="color:#66d9ef">string</span>) (<span style="color:#a6e22e">entity</span>.<span style="color:#a6e22e">User</span>, <span style="color:#66d9ef">error</span>) {
+  <span style="color:#a6e22e">query</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;SELECT * FROM users WHERE username = &#39;%s&#39; AND password = &#39;%s&#39;&#34;</span>, <span style="color:#a6e22e">username</span>, <span style="color:#a6e22e">password</span>)
+  <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">query</span>)
+
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">user</span> <span style="color:#a6e22e">entity</span>.<span style="color:#a6e22e">User</span>
+  <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">MySQL</span>.<span style="color:#a6e22e">Get</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">query</span>)
+  <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">entity</span>.<span style="color:#a6e22e">User</span>{}, <span style="color:#a6e22e">err</span>
+  }
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">user</span>, <span style="color:#66d9ef">nil</span>
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">service</span>.<span style="color:#a6e22e">User</span>.<span style="color:#a6e22e">Login</span>(<span style="color:#a6e22e">username</span>, <span style="color:#a6e22e">password</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
+  <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">Username</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;admin&#34;</span> {
+    <span style="color:#a6e22e">result</span> = <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Getenv</span>(<span style="color:#e6db74">&#34;JIWON_FLAG&#34;</span>)
+  } <span style="color:#66d9ef">else</span> {
+    <span style="color:#a6e22e">result</span> = <span style="color:#e6db74">&#34;You are not admin&#34;</span>
+  }
+} <span style="color:#66d9ef">else</span> {
+  <span style="color:#a6e22e">result</span> = <span style="color:#e6db74">&#34;Invalid username or password&#34;</span>
+}
+</code></pre></div><p>At a glance, it seems quite easy, just query user with username equal <strong>admin</strong> right. This injection should do fine <code>admin' limit 1 -- -</code> but turns out there is no user with username equal <strong>admin</strong>.</p>
+<p>The trick here is to ignore all the query and perform a new one with case function to change whatever username into <strong>admin</strong>. So, we come up with this very long injection <code>' and true union select id, case when true then 'admin' else 'admin' end as username, password from users limit 1 -- -</code>. When we run it, as expected we got another flag.</p>
+<blockquote>
+<p>From this flag, we know pattern for the flag which is flag{SOME_SECRET_MESSAGE}</p>
+</blockquote>
+<h3 id="crypto-sections">Crypto Sections</h3>
+<p>One of the crypto challenges is called <strong>XORIN</strong>. The hint given are two files, one containing the encoded flag and the other containing python script.</p>
+<p>Here is what inside those file, <code>flag.txt.enc</code> and <code>encrypt.py</code> respectively:</p>
+<pre><code>0:71-.9$g8	387==========	;78&quot;7444+
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plain <span style="color:#f92672">=</span> open(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">flag.txt</span><span style="color:#e6db74">&#39;</span>)<span style="color:#f92672">.</span>read()
+cipher <span style="color:#f92672">=</span> open(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">flag.txt.enc</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">w</span><span style="color:#e6db74">&#39;</span>)
+key <span style="color:#f92672">=</span> raw_input(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Masukkan key (1 karakter): </span><span style="color:#e6db74">&#34;</span>)
+<span style="color:#66d9ef">assert</span>(len(key) <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>)
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">enkripsi</span>(plain, key):
+  enc <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">&#39;</span>
+  <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> plain:
+    enc <span style="color:#f92672">+</span><span style="color:#f92672">=</span> chr(ord(i) <span style="color:#f92672">^</span> ord(key))
+  <span style="color:#66d9ef">return</span> enc
+
+enc <span style="color:#f92672">=</span> enkripsi(plain, key)
+cipher<span style="color:#f92672">.</span>write(enc)
+cipher<span style="color:#f92672">.</span>close()
+<span style="color:#66d9ef">print</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Encrypted!</span><span style="color:#e6db74">&#34;</span>
+</code></pre></div><p>Okay, I know just a little about python but just enough to run that script. After running it, I know that it will read <code>flag.txt</code>, take a kay character from input, and use that character to somehow encrypt text inside <code>flag.txt</code> and finally store it in <code>flag.txt.enc</code>.</p>
+<p>After quite long googling, I know whats going on here:</p>
+<blockquote>
+<p>it simply loop over the caracter from <code>flag.txt</code>, turn it inco ASCII code then perform bitwise XOR operator with ASCII code of key character.</p>
+</blockquote>
+<p>It's called <strong>XOR Chiper</strong> and turns out that to decrypt it, just input the encoded text and it will do the job. The problem here is how do I know the key that used to encode. Because I'm so lazy to think, the only solution that comes up to my mind is brute force, run the script with every possible keys</p>
+<blockquote>
+<p>abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+</blockquote>
+<p>So, I modified the file a little bit to look like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plain <span style="color:#f92672">=</span> open(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">flag.txt</span><span style="color:#e6db74">&#39;</span>)<span style="color:#f92672">.</span>read()
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">enkripsi</span>(plain, key):
+  enc <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">&#39;</span>
+  <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> plain:
+    enc <span style="color:#f92672">+</span><span style="color:#f92672">=</span> chr(ord(i) <span style="color:#f92672">^</span> ord(key))
+  <span style="color:#66d9ef">return</span> enc
+
+<span style="color:#75715e"># brute force with all possible keys</span>
+<span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</span><span style="color:#e6db74">&#39;</span>:
+  enc <span style="color:#f92672">=</span> enkripsi(plain, k)
+  <span style="color:#75715e"># if contains &#39;flag&#39; print it</span>
+  <span style="color:#66d9ef">if</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">flag</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">in</span> enc: <span style="color:#66d9ef">print</span> enc
+</code></pre></div><p>When I run the script, &hellip;. viola! There is the flag!</p>
+<p>That's it folks! Thanks for reading.</p>
+
+
+  </article>
+
+
+      <footer class="site-footer">
+        <span itemscope itemtype="http://schema.org/Person">
+          <link itemprop="url" href="https://husnulhamidiah.github.io/">
+          <span itemprop="name">Husnul Anwari</span>
+
+          ,
+          <span itemprop="jobTitle">Product Engineer</span> at
+          <span itemprop="memberOf" itemscope itemtype="http://schema.org/Organization"><a itemprop="url" href="https://www.gojek.io"><span itemprop="name">Gojek</span></a></span><br>
+
+          <a itemprop="sameAs" href="https://github.com/husnulhamidiah" title="GitHub">GH</a>
+
+          <a itemprop="sameAs" href="https://twitter.com/husnulanwari" title="Twitter">TW</a>
+
+          
+        </span>
+
+        
+      </footer>
+    </div>
+
+  <script src="/js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  </body>
+</html>
+

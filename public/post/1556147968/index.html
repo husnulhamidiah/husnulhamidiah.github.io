@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Hugo 0.60.1" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Husnul Anwari">
+  <meta property="og:url" content="https://husnulhamidiah.github.io/post/1556147968/">
+
+  <title>How to create a blog with Hugo and Github - Honbon</title>
+  <meta property="og:title" content="How to create a blog with Hugo and Github - Honbon">
+  <meta property="og:type" content="article">
+  <meta name="description" content="">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700">
+  <link rel="stylesheet" href="/css/highlight.css">
+  <link rel="stylesheet" href="/css/journal.css">
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="Honbon">
+
+</head>
+
+<body>
+  <div class="container">
+
+    <nav class="site-nav">
+      <a href="https://husnulhamidiah.github.io/">Index</a>
+    </nav>
+
+
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">How to create a blog with Hugo and Github</h1>
+      <time class="post-date" datetime="2018-04-09 08:51:07 WIB">09 Apr 2018</time>
+    </header>
+
+    <h2 id="introduction">Introduction</h2>
+<p>Blogging is a common thing right now, you can start blogging using free services with zero configuration like Blogger or Wordpress. On the other hands, did you know that you can build your own blogging platform too — from the ground at no cost.</p>
+<p>Introducing Hugo - one of the most popular open-source static site generators written in Go a.k.a Golang. It offers simplicity in building a website while maintaining good performance and flexibility. Unlike other blogging platforms, there is no database, no plugins requiring any permissions, and no underlying platform running on your server, there’s no added security concern.</p>
+<p>How about styles? No worry with both the official ones that the Hugo team maintains as well as the community-contributed ones — has a wide range of selection that you can pick based on your need.</p>
+<p>Some of the most popular choices include:</p>
+<ul>
+<li><a href="https://github.com/budparr/gohugo-theme-ananke">Ananke</a> - The intent of this theme is to provide a solid starting place for Hugo sites with basic features and include best practices for performance, accessibility, and rapid development.</li>
+<li><a href="https://github.com/jeblister/kube">Kube</a> - A professional and a responsive Hugo theme for developers and designers that offer a documentation section mixed with a landing page and a blog.</li>
+<li><a href="https://github.com/kishaningithub/hugo-creative-portfolio-theme">Creative portfolio</a> - A clean and elegant template mainly made for designers and creatives but can be easily transformed into a generic website.</li>
+</ul>
+<p>You can find a more complete list of both official and community-contributed themes on Hugo's <a href="https://themes.gohugo.io">website</a> and <a href="https://github.com/topics/hugo-theme">Github</a>.</p>
+<p>In this tutorial, you will move through step-by-step to build your own blogging platform using Hugo. Starting with installing Hugo, adding themes, adding contents and deploy it with Github pages so everyone can access and read your awesome stories.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before following this tutorial make sure you have:</p>
+<ol>
+<li>Git - You should have Git installed on your local machine. You can check if Git is installed on your computer and go through the installation process for your operating system by running <code>git --version</code> command. You’ll see git version running on your machine otherwise you have to install git by following this <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">docs</a>.</li>
+<li>Github account - This is mandatory in order to host your site later on. Make yourself a Github account signing up on the front page.</li>
+<li>Text Editor - You need a text editor such as <a href="https://code.visualstudio.com">VSCode</a>, <a href="https://atom.io">Atom</a>, or <a href="https://www.sublimetext.com">Sublime</a> to edit Hugo’s configuration file and add some content to your site. If you are using Mac or Linux and looking for some heat you can use <code>nano</code> or <code>vim</code> text editor that comes out of the box.</li>
+</ol>
+<h2 id="step-1--install-hugo">Step 1 — Install Hugo</h2>
+<h3 id="macos">MacOS</h3>
+<p>Using Homebrew, you can install Hugo with the following one-liner. It may take a while.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ brew install Hugo
+</code></pre></div><h3 id="linux-debianubuntu-variant">Linux (Debian/Ubuntu variant)</h3>
+<p>The easiest way to install Hugo on Debian/Ubuntu is by using the provided package via apt-get:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo apt-get install hugo
+</code></pre></div><blockquote>
+<p>Using this method is easy but there is a catch, you might not be the latest version, especially if you are using an older, stable version (e.g., Ubuntu 16.04 LTS). Until backports and PPA are available, you may consider installing the Hugo snap package to get the latest version of Hugo.</p>
+</blockquote>
+<p>You can verify your installation with this command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ hugo version
+</code></pre></div><h2 id="step-2--create-a-new-blog">Step 2 — Create a New Blog</h2>
+<p>Create a new site that will become your blog. The command below will create a new Hugo site in a folder named <code>personal-blog</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ hugo new site personal-blog
+</code></pre></div><h2 id="step-3--theme-your-blog">Step 3 — Theme Your Blog</h2>
+<p>Next thing is to add some themes to your blog. With Hugo, you can either theme your blog yourself or use one of the beautiful, ready-made themes. I choose <code>hello-friend</code> because it is deliciously simple. To install it :</p>
+<p>Make sure you are inside your blog directory:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cd delicious-blog
+</code></pre></div><p>Clone <code>hello-friend</code> theme into the <code>themes/hello-friend</code> directory and copy <code>config.toml</code> file from <code>hello-friend</code> to your site.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git init
+$ git submodule add https://github.com/panr/hugo-theme-hello-friend.git themes/hello-friend
+$ cp themes/hello-friend/exampleSite/config.toml ./
+</code></pre></div><p>Adjust your site configuration by opening <code>config.toml</code> file using your favorite text editor. Fortunately <code>hello-friend</code> gives a clear explanation line-by-line about this configuration.</p>
+<p>If you want to add more themes, just repeat the above steps. For most themes, it will work flawlessly.</p>
+<h2 id="step-4--add-some-awesome-contents">Step 4 — Add Some Awesome Contents</h2>
+<p>There are a couple ways you can create content for Hugo. The easiest way is to use Hugo’s cli:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ hugo new post/how-to-build-a-spaceship.md
+</code></pre></div><p>That command will create an <code>how-to-build-a-spaceship.md</code> file inside <code>post</code> folder (Hugo will create it automatically if it doesn’t exist) inside the content folder. Edit the newly created content file if you want.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">---
+title: &#34;How to Build a Spaceship&#34;
+date: 2018-04-09T08:51:07+07:00
+draft: true
+---
+
+<span style="color:#75715e">## Introduction
+</span><span style="color:#75715e"></span>
+A spacecraft is a vehicle or machine designed to fly in outer space. Spacecraft are used for a variety of purposes, including communications, Earth observation, ...
+</code></pre></div><p>In case you’re curious, the generated file has a certain header, to begin with — it called Front Matter. You can read more details about this <a href="https://gohugo.io/content-management/front-matter">Front Matter</a> in Hugo’s official documentation.</p>
+<h2 id="step-5--run-your-site-locally">Step 5 — Run Your Site Locally</h2>
+<p>Now, start the Hugo server with drafts enabled to see what’s your site looks like :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ hugo server -D
+</code></pre></div><p>Navigate your browser to http://127.0.0.1:1313 and see the magic 🎉. Apply different themes, tweak the configuration file and add more content until you are satisfied with your result.</p>
+<h2 id="step-6--deploy-to-github">Step 6 — Deploy to Github</h2>
+<p>It’s not complete if your site just running on your machine, people still cannot access it yet. From their documentation, you can host your new Hugo website virtually anywhere. One of them is <a href="https://pages.github.com">Github Pages</a>, It’s free, easy to set up and supports HTTPS!</p>
+<p>Create a <code>YOUR_PROJECT</code> e.g (personal-blog) repository with your Github account. This repository will hold all of Hugo’s content, configuration, and other files.</p>
+<p>Create a <code>USERNAME.github.io</code> repository (Yes! You need two repositories). Make sure your <code>USERNAME</code> is your real username, otherwise your site will not showing up properly. This repository will hold a fully rendered version of your site.</p>
+<blockquote>
+<p>Make sure your baseurl key-value in your <code>config.toml</code> reflects the full URL of your GitHub pages repository.</p>
+</blockquote>
+<p>Inside your site directory, create a new git project and add a new remote URL.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git remote add origin https://github.com/USERNAME/YOUR_PROJECT.git
+</code></pre></div><p>Remove public folder and add git <a href="https://blog.github.com/2016-02-01-working-with-submodules">submodule</a>. So when you run hugo command to build your site it will live on public folder but have a different remote origin.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ rm -rfd public/
+$ git submodule add https://github.com/USERNAME/USERNAME.github.io.git
+</code></pre></div><p>Build your site, change directory to public, make a commit and push everything in it. Note, this will publish into <code>https://github.com/USERNAME/USERNAME.github.io</code> repository.</p>
+<pre><code>$ hugo -t hello-friend
+$ cd public
+$ git add .
+$ git commit -t 'Initital commit' &amp;&amp; git push origin master
+</code></pre><p>Back to root directory, push everything to Github.</p>
+<pre><code>$ cd ..
+$ git add .
+$ git commit -t 'Initital commit' &amp;&amp; git push origin master
+</code></pre><p>That’s it!</p>
+<p>Your personal page should be up and running at <code>https://USERNAME.github.io</code> within a couple minutes.</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>In this tutorial we downloaded, configured, and host a complete Hugo site. If you follow all the steps above you should see something like <a href="http://husnulanwari.github.io/"><a href="http://husnulhamidiah.github.io">http://husnulhamidiah.github.io</a></a> (this site). You can take a look it’s source code at my <a href="https://github.com/husnulhamidiah">Github</a>.</p>
+<p>If you’d like to learn more about how to configure, customize your Hugo site even further and see what else Hugo can do, visit the official Hugo documentation. You’ll find a lot of resources starting from adding a static page, comment, create your own theme and many more.</p>
+<p>And, if you have an issue or idea to make Hugo better, feel free to contribute to their Github <a href="https://github.com/gohugoio/hugo">repository</a>.</p>
+
+
+  </article>
+
+
+      <footer class="site-footer">
+        <span itemscope itemtype="http://schema.org/Person">
+          <link itemprop="url" href="https://husnulhamidiah.github.io/">
+          <span itemprop="name">Husnul Anwari</span>
+
+          ,
+          <span itemprop="jobTitle">Product Engineer</span> at
+          <span itemprop="memberOf" itemscope itemtype="http://schema.org/Organization"><a itemprop="url" href="https://www.gojek.io"><span itemprop="name">Gojek</span></a></span><br>
+
+          <a itemprop="sameAs" href="https://github.com/husnulhamidiah" title="GitHub">GH</a>
+
+          <a itemprop="sameAs" href="https://twitter.com/husnulanwari" title="Twitter">TW</a>
+
+          
+        </span>
+
+        
+      </footer>
+    </div>
+
+  <script src="/js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  </body>
+</html>
+
