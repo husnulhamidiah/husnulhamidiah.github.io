@@ -7,4 +7,4 @@
 	url = https://github.com/tomfran/typo.git
 [submodule "public"]
 	path = public
-	url = https://github.com/husnulhamidiah/husnulhamidiah.github.io.git
+	url = git@github.com:husnulhamidiah/husnulhamidiah.github.io.git
