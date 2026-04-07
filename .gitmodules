@@ -2,3 +2,6 @@
 	path = themes/hugo-journal
 	url = https://github.com/dashdashzako/hugo-journal.git
 	branch = master
+[submodule "themes/typo"]
+	path = themes/typo
+	url = https://github.com/tomfran/typo.git

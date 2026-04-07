@@ -1,0 +1,4 @@
+<details class="experiences-accordion">
+  <summary>{{ .Get "year" }} &ensp; • &ensp; {{ .Get "position" }} &ensp; • &ensp; {{ .Get "company" }}</summary>
+  {{ .Inner | markdownify }}
+</details>

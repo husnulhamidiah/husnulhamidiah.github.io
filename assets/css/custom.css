@@ -1,0 +1,48 @@
+:root {
+  --h1-font-size: 1.3em;
+  --h2-font-size: 1.2em;
+  --hx-font-size: 1.1em;
+}
+
+summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+/* Chrome, Edge, Safari */
+summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Firefox */
+summary::marker {
+  display: none;
+}
+
+summary::before {
+  content: "↘";
+  display: inline-block;
+  margin-right: 0.5rem;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+details > *:not(summary) {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+details[open] > *:not(summary) {
+  opacity: 1;
+  max-height: 500px; /* adjust based on content */
+}
+
+.experiences-accordion {
+  margin-bottom: var(--hx-margin-bottom);
+}
