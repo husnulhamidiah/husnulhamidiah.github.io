@@ -1,8 +1,8 @@
 # About Me
 
-I am an Indonesian software engineer. I enjoy tinkering with ideas and turning them into code, constantly exploring new ways to build and improve systems. I'm proficient in Golang, Java, Svelte, and other things. I have experience working both independently and in teams, and I'm a dedicated learner.
+I'm an Indonesian software engineer who enjoys tinkering with ideas and turning them into code. I'm always exploring new ways to build, experiment with, and improve systems.
 
-Beyond engineering, I’m interested in writing and photography. Oh I like art, even if I’m pretty bad at it.
+Beyond programming, I enjoy writing, photography, and art — even if I'm not particularly good at it.
 
 ## Stack Proficiencies
 Golang, Node.js, Ruby, Java, PHP, Svelte, Kafka, Redis, RabbitMQ, PostgreSQL, MongoDB, MySQL, and running.

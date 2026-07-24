@@ -18,9 +18,11 @@ hideHeader = false
 # Intro on main page, content in markdown
 homeIntroTitle = 'Hi!'
 homeIntroContent = """
-I am an Indonesian software engineer. I enjoy tinkering with ideas and turning them into code, constantly exploring new ways to build and improve systems. 
-I’m interested in writing and photography. Oh I like art, even if I’m pretty bad at it. \\
-Feel free to read [about myself](/about) or to look at my [posts](/posts).
+I'm an Indonesian software engineer who enjoys tinkering with ideas and turning them into code. I'm always exploring new ways to build, experiment with, and improve systems.
+
+Beyond programming, I enjoy writing, photography, and art — even if I'm not particularly good at it.
+
+Feel free to read more [about me](/about) or browse my [posts](/posts).
 """
 
 singleDateFormat = '2 Jan 2006'
@@ -56,15 +58,6 @@ url = "https://github.com/husnulhamidiah"
 name = "instagram"
 url = "https://www.instagram.com/analogsaurus/"
 
-# [[params.social]]
-# name = "leetcode"
-# url = "https://leetcode.com/u/tomfran/"
-
-# Main menu pages
-# [[params.menu]]
-# name = "home"
-# url = "/"
-
 [[params.menu]]
 name = "posts"
 url = "/posts"
@@ -74,13 +67,8 @@ name = "about"
 url = "/about"
 
 [[params.menu]]
-name = "library"
-url = "/library"
-
-# [[params.menu]]
-# name = "tags"
-# url = "/tags"
-
+name = "projects"
+url = "/projects"
 
 # Syntax highlight on code blocks
 [markup]
