@@ -35,10 +35,10 @@ jobs:
       - name: Disable Jekyll on GitHub Pages
         run: touch public/.nojekyll
 
-      - name: Publish to GitHub Pages branch
+      - name: Publish to public branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
+          publish_branch: public
           publish_dir: ./public
           force_orphan: true
