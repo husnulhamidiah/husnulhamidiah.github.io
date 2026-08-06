@@ -32,6 +32,9 @@ jobs:
       - name: Build site
         run: hugo --minify --baseURL "https://husnulhamidiah.github.io"
 
+      - name: Disable Jekyll on GitHub Pages
+        run: touch public/.nojekyll
+
       - name: Publish to GitHub Pages branch
         uses: peaceiris/actions-gh-pages@v4
         with:
