@@ -5,6 +5,3 @@
 [submodule "themes/typo"]
 	path = themes/typo
 	url = https://github.com/tomfran/typo.git
-[submodule "public"]
-	path = public
-	url = git@github.com:husnulhamidiah/husnulhamidiah.github.io.git
