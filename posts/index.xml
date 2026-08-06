@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on ho͝osnul</title><link>https://husnulhamidiah.github.io/posts/</link><description>Recent content in Posts on ho͝osnul</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 12 May 2018 17:20:22 +0700</lastBuildDate><atom:link href="https://husnulhamidiah.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Install Xposed on Nexus 5x (Oreo)</title><link>https://husnulhamidiah.github.io/posts/1775587740_how_to_install_xposed_on_nexus_5/</link><pubDate>Sat, 12 May 2018 17:20:22 +0700</pubDate><guid>https://husnulhamidiah.github.io/posts/1775587740_how_to_install_xposed_on_nexus_5/</guid><description>&lt;h2 class="heading" id="introduction"&gt;
+ Introduction
+ &lt;a class="anchor" href="#introduction"&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;After installing TWRP and rooted my nexus 5x last week, the first thing that pops into my head is installing Xposed Framework. If you don&amp;rsquo;t know what is Xposed Framework, here what brief explanation as on its official website.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Xposed is a framework for modules that can change the behavior of the system and apps without touching any APKs. Xposed gives developers the ability to modify pretty much whatever they want—mostly aimed at individual applications but even system-wide features can be modified.&lt;/p&gt;</description></item><item><title>How to Install TWRP and Root Nexus 5x</title><link>https://husnulhamidiah.github.io/posts/1775587728_how_to_install_twrp_and_root_nexus_5/</link><pubDate>Tue, 08 May 2018 14:20:43 +0700</pubDate><guid>https://husnulhamidiah.github.io/posts/1775587728_how_to_install_twrp_and_root_nexus_5/</guid><description>&lt;h2 class="heading" id="disclaimer"&gt;
+ Disclaimer
+ &lt;a class="anchor" href="#disclaimer"&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;These have all been tested BUT install TWRP and root at your own risk! I am &lt;strong&gt;NOT&lt;/strong&gt; responsible for anything that may happen to your device. Your device warranty is now void.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 class="heading" id="introduction"&gt;
+ Introduction
+ &lt;a class="anchor" href="#introduction"&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;This month I got my Frankenstein nexus 5x back (I will tell the story behind all of this later) since my previous phone was lost. Everything works fine with this phone, it already updated to April 2018 security patch. I install Evie launcher, some productivity apps, and a couple games.&lt;/p&gt;</description></item></channel></rss>
